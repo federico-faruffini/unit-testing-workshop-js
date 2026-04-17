@@ -1,0 +1,27 @@
+{
+  "name": "unit-testing-workshop-js",
+  "version": "1.0.0",
+  "description": "Unit Testing Workshop for JavaScript using Jest - Teaching unit testing fundamentals to Computer Engineering Master's students",
+  "type": "module",
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "unit-testing",
+    "testing",
+    "jest",
+    "education",
+    "isolation",
+    "mocking"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "babel-jest": "^30.3.0",
+    "jest": "^29.7.0"
+  }
+}
