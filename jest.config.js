@@ -1,6 +1,5 @@
 export default {
   testEnvironment: 'node',
-  extensionsToTreatAsEsm: ['.js'],
   collectCoverageFrom: [
     '**/*.js',
     '!**/node_modules/**'
