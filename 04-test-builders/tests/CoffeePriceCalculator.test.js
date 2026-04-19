@@ -10,6 +10,7 @@ describe('CoffeePriceCalculator', () => {
 
   describe('Basic price calculation', () => {
     it('should calculate price for a basic espresso', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -22,26 +23,41 @@ describe('CoffeePriceCalculator', () => {
         isExtraHot: false,
         isVegan: false,
       });
-      expect(calculator.calculatePrice(order)).toBe(2.0);
+
+      // Act
+      const price = calculator.calculatePrice(order);
+
+      // Assert
+      expect(price).toBe(2.0);
     });
 
     it('should calculate price for different coffee types', () => {
+      // Arrange
       const espresso = new CoffeeOrder({ coffeeType: 'espresso', size: 'medium', milk: 'none', shots: 1, temperature: 'hot', syrup: null, hasWhippedCream: false, hasChocolatePowder: false, isExtraHot: false, isVegan: false });
       const cappuccino = new CoffeeOrder({ coffeeType: 'cappuccino', size: 'medium', milk: 'none', shots: 1, temperature: 'hot', syrup: null, hasWhippedCream: false, hasChocolatePowder: false, isExtraHot: false, isVegan: false });
       const latte = new CoffeeOrder({ coffeeType: 'latte', size: 'medium', milk: 'none', shots: 1, temperature: 'hot', syrup: null, hasWhippedCream: false, hasChocolatePowder: false, isExtraHot: false, isVegan: false });
       const americano = new CoffeeOrder({ coffeeType: 'americano', size: 'medium', milk: 'none', shots: 1, temperature: 'hot', syrup: null, hasWhippedCream: false, hasChocolatePowder: false, isExtraHot: false, isVegan: false });
       const macchiato = new CoffeeOrder({ coffeeType: 'macchiato', size: 'medium', milk: 'none', shots: 1, temperature: 'hot', syrup: null, hasWhippedCream: false, hasChocolatePowder: false, isExtraHot: false, isVegan: false });
 
-      expect(calculator.calculatePrice(espresso)).toBe(2.0);
-      expect(calculator.calculatePrice(cappuccino)).toBe(3.0);
-      expect(calculator.calculatePrice(latte)).toBe(3.0);
-      expect(calculator.calculatePrice(americano)).toBe(2.5);
-      expect(calculator.calculatePrice(macchiato)).toBe(3.5);
+      // Act
+      const espressoPrice = calculator.calculatePrice(espresso);
+      const cappuccinoPrice = calculator.calculatePrice(cappuccino);
+      const lattePrice = calculator.calculatePrice(latte);
+      const americanoPrice = calculator.calculatePrice(americano);
+      const macchiatoPrice = calculator.calculatePrice(macchiato);
+
+      // Assert
+      expect(espressoPrice).toBe(2.0);
+      expect(cappuccinoPrice).toBe(3.0);
+      expect(lattePrice).toBe(3.0);
+      expect(americanoPrice).toBe(2.5);
+      expect(macchiatoPrice).toBe(3.5);
     });
   });
 
   describe('Size multiplier', () => {
     it('should apply size multiplier to price', () => {
+      // Arrange
       const smallOrder = new CoffeeOrder({
         size: 'small',
         coffeeType: 'espresso',
@@ -79,14 +95,21 @@ describe('CoffeePriceCalculator', () => {
         isVegan: false,
       });
 
-      expect(calculator.calculatePrice(smallOrder)).toBe(1.8);
-      expect(calculator.calculatePrice(mediumOrder)).toBe(2.0);
-      expect(calculator.calculatePrice(largeOrder)).toBe(2.4);
+      // Act
+      const smallPrice = calculator.calculatePrice(smallOrder);
+      const mediumPrice = calculator.calculatePrice(mediumOrder);
+      const largePrice = calculator.calculatePrice(largeOrder);
+
+      // Assert
+      expect(smallPrice).toBe(1.8);
+      expect(mediumPrice).toBe(2.0);
+      expect(largePrice).toBe(2.4);
     });
   });
 
   describe('Extra shots', () => {
     it('should add price for extra shots', () => {
+      // Arrange
       const singleShot = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -124,14 +147,21 @@ describe('CoffeePriceCalculator', () => {
         isVegan: false,
       });
 
-      expect(calculator.calculatePrice(singleShot)).toBe(2.0);
-      expect(calculator.calculatePrice(doubleShot)).toBe(2.75);
-      expect(calculator.calculatePrice(tripleShot)).toBe(3.5);
+      // Act
+      const singleShotPrice = calculator.calculatePrice(singleShot);
+      const doubleShotPrice = calculator.calculatePrice(doubleShot);
+      const tripleShotPrice = calculator.calculatePrice(tripleShot);
+
+      // Assert
+      expect(singleShotPrice).toBe(2.0);
+      expect(doubleShotPrice).toBe(2.75);
+      expect(tripleShotPrice).toBe(3.5);
     });
   });
 
   describe('Milk options', () => {
     it('should add price for milk options', () => {
+      // Arrange
       const noMilk = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -193,16 +223,25 @@ describe('CoffeePriceCalculator', () => {
         isVegan: false,
       });
 
-      expect(calculator.calculatePrice(noMilk)).toBe(2.0);
-      expect(calculator.calculatePrice(wholeMilk)).toBe(2.5);
-      expect(calculator.calculatePrice(skimMilk)).toBe(2.5);
-      expect(calculator.calculatePrice(oatMilk)).toBe(2.75);
-      expect(calculator.calculatePrice(almondMilk)).toBe(2.75);
+      // Act
+      const noMilkPrice = calculator.calculatePrice(noMilk);
+      const wholeMilkPrice = calculator.calculatePrice(wholeMilk);
+      const skimMilkPrice = calculator.calculatePrice(skimMilk);
+      const oatMilkPrice = calculator.calculatePrice(oatMilk);
+      const almondMilkPrice = calculator.calculatePrice(almondMilk);
+
+      // Assert
+      expect(noMilkPrice).toBe(2.0);
+      expect(wholeMilkPrice).toBe(2.5);
+      expect(skimMilkPrice).toBe(2.5);
+      expect(oatMilkPrice).toBe(2.75);
+      expect(almondMilkPrice).toBe(2.75);
     });
   });
 
   describe('Toppings and extras', () => {
     it('should add price for whipped cream', () => {
+      // Arrange
       const withoutWhippedCream = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -228,11 +267,17 @@ describe('CoffeePriceCalculator', () => {
         isVegan: false,
       });
 
-      expect(calculator.calculatePrice(withoutWhippedCream)).toBe(2.0);
-      expect(calculator.calculatePrice(withWhippedCream)).toBe(2.75);
+      // Act
+      const withoutWhippedCreamPrice = calculator.calculatePrice(withoutWhippedCream);
+      const withWhippedCreamPrice = calculator.calculatePrice(withWhippedCream);
+
+      // Assert
+      expect(withoutWhippedCreamPrice).toBe(2.0);
+      expect(withWhippedCreamPrice).toBe(2.75);
     });
 
     it('should add price for chocolate powder', () => {
+      // Arrange
       const withoutChocolate = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -258,11 +303,17 @@ describe('CoffeePriceCalculator', () => {
         isVegan: false,
       });
 
-      expect(calculator.calculatePrice(withoutChocolate)).toBe(2.0);
-      expect(calculator.calculatePrice(withChocolate)).toBe(2.5);
+      // Act
+      const withoutChocolatePrice = calculator.calculatePrice(withoutChocolate);
+      const withChocolatePrice = calculator.calculatePrice(withChocolate);
+
+      // Assert
+      expect(withoutChocolatePrice).toBe(2.0);
+      expect(withChocolatePrice).toBe(2.5);
     });
 
     it('should add price for syrup', () => {
+      // Arrange
       const withoutSyrup = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -288,11 +339,17 @@ describe('CoffeePriceCalculator', () => {
         isVegan: false,
       });
 
-      expect(calculator.calculatePrice(withoutSyrup)).toBe(2.0);
-      expect(calculator.calculatePrice(withSyrup)).toBe(2.5);
+      // Act
+      const withoutSyrupPrice = calculator.calculatePrice(withoutSyrup);
+      const withSyrupPrice = calculator.calculatePrice(withSyrup);
+
+      // Assert
+      expect(withoutSyrupPrice).toBe(2.0);
+      expect(withSyrupPrice).toBe(2.5);
     });
 
     it('should add price for extra hot', () => {
+      // Arrange
       const regularHot = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -318,11 +375,17 @@ describe('CoffeePriceCalculator', () => {
         isVegan: false,
       });
 
-      expect(calculator.calculatePrice(regularHot)).toBe(2.0);
-      expect(calculator.calculatePrice(extraHot)).toBe(2.25);
+      // Act
+      const regularHotPrice = calculator.calculatePrice(regularHot);
+      const extraHotPrice = calculator.calculatePrice(extraHot);
+
+      // Assert
+      expect(regularHotPrice).toBe(2.0);
+      expect(extraHotPrice).toBe(2.25);
     });
 
     it('should calculate price for multiple toppings', () => {
+      // Arrange
       const deluxe = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -336,12 +399,17 @@ describe('CoffeePriceCalculator', () => {
         isVegan: false,
       });
 
-      expect(calculator.calculatePrice(deluxe)).toBe(3.5);
+      // Act
+      const deluxePrice = calculator.calculatePrice(deluxe);
+
+      // Assert
+      expect(deluxePrice).toBe(3.5);
     });
   });
 
   describe('Complex orders', () => {
     it('should calculate complex order price correctly', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'large',
         coffeeType: 'cappuccino',
@@ -355,10 +423,15 @@ describe('CoffeePriceCalculator', () => {
         isVegan: false,
       });
 
-      expect(calculator.calculatePrice(order)).toBe(6.35);
+      // Act
+      const price = calculator.calculatePrice(order);
+
+      // Assert
+      expect(price).toBe(6.35);
     });
 
     it('should return prices rounded to 2 decimal places', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'large',
         coffeeType: 'cappuccino',
@@ -372,7 +445,10 @@ describe('CoffeePriceCalculator', () => {
         isVegan: false,
       });
 
+      // Act
       const price = calculator.calculatePrice(order);
+
+      // Assert
       expect(price).toBe(parseFloat(price.toFixed(2)));
     });
   });
@@ -381,6 +457,7 @@ describe('CoffeePriceCalculator', () => {
 describe('CoffeeOrder', () => {
   describe('Descriptions', () => {
     it('should generate description for basic coffee', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -393,11 +470,17 @@ describe('CoffeeOrder', () => {
         isExtraHot: false,
         isVegan: false,
       });
-      expect(order.getDescription()).toContain('espresso');
-      expect(order.getDescription()).toContain('medium');
+
+      // Act
+      const description = order.getDescription();
+
+      // Assert
+      expect(description).toContain('espresso');
+      expect(description).toContain('medium');
     });
 
     it('should include milk in description when present', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -410,10 +493,16 @@ describe('CoffeeOrder', () => {
         isExtraHot: false,
         isVegan: false,
       });
-      expect(order.getDescription()).toContain('oat milk');
+
+      // Act
+      const description = order.getDescription();
+
+      // Assert
+      expect(description).toContain('oat milk');
     });
 
     it('should include multiple customizations in description', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'large',
         coffeeType: 'cappuccino',
@@ -427,7 +516,10 @@ describe('CoffeeOrder', () => {
         isVegan: false,
       });
 
+      // Act
       const description = order.getDescription();
+
+      // Assert
       expect(description).toContain('large');
       expect(description).toContain('3-shot');
       expect(description).toContain('cappuccino');
@@ -436,6 +528,7 @@ describe('CoffeeOrder', () => {
     });
 
     it('should indicate extra hot in description', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -448,10 +541,16 @@ describe('CoffeeOrder', () => {
         isExtraHot: true,
         isVegan: false,
       });
-      expect(order.getDescription()).toContain('extra hot');
+
+      // Act
+      const description = order.getDescription();
+
+      // Assert
+      expect(description).toContain('extra hot');
     });
 
     it('should indicate iced in description', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -464,10 +563,16 @@ describe('CoffeeOrder', () => {
         isExtraHot: false,
         isVegan: false,
       });
-      expect(order.getDescription()).toContain('iced');
+
+      // Act
+      const description = order.getDescription();
+
+      // Assert
+      expect(description).toContain('iced');
     });
 
     it('should indicate vegan in description', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -480,12 +585,18 @@ describe('CoffeeOrder', () => {
         isExtraHot: false,
         isVegan: true,
       });
-      expect(order.getDescription()).toContain('vegan');
+
+      // Act
+      const description = order.getDescription();
+
+      // Assert
+      expect(description).toContain('vegan');
     });
   });
 
   describe('Validation', () => {
     it('should validate a basic order successfully', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -498,10 +609,16 @@ describe('CoffeeOrder', () => {
         isExtraHot: false,
         isVegan: false,
       });
-      expect(() => order.validate()).not.toThrow();
+
+      // Act
+      const action = () => order.validate();
+
+      // Assert
+      expect(action).not.toThrow();
     });
 
     it('should reject vegan order with whole milk', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -515,12 +632,15 @@ describe('CoffeeOrder', () => {
         isVegan: true,
       });
 
-      expect(() => order.validate()).toThrow(
-        'Cannot have vegan order with whole milk'
-      );
+      // Act
+      const action = () => order.validate();
+
+      // Assert
+      expect(action).toThrow('Cannot have vegan order with whole milk');
     });
 
     it('should reject vegan order with whipped cream', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -534,12 +654,15 @@ describe('CoffeeOrder', () => {
         isVegan: true,
       });
 
-      expect(() => order.validate()).toThrow(
-        'Cannot have vegan order with whipped cream'
-      );
+      // Act
+      const action = () => order.validate();
+
+      // Assert
+      expect(action).toThrow('Cannot have vegan order with whipped cream');
     });
 
     it('should reject order that is both extra hot and iced', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'medium',
         coffeeType: 'espresso',
@@ -553,12 +676,15 @@ describe('CoffeeOrder', () => {
         isVegan: false,
       });
 
-      expect(() => order.validate()).toThrow(
-        'Cannot be both extra hot and iced'
-      );
+      // Act
+      const action = () => order.validate();
+
+      // Assert
+      expect(action).toThrow('Cannot be both extra hot and iced');
     });
 
     it('should reject invalid size', () => {
+      // Arrange
       const order = new CoffeeOrder({
         size: 'gigantic',
         coffeeType: 'espresso',
@@ -572,7 +698,11 @@ describe('CoffeeOrder', () => {
         isVegan: false,
       });
 
-      expect(() => order.validate()).toThrow('Invalid size: gigantic');
+      // Act
+      const action = () => order.validate();
+
+      // Assert
+      expect(action).toThrow('Invalid size: gigantic');
     });
   });
 });
