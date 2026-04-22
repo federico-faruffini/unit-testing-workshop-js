@@ -7,8 +7,8 @@ The goal of the workshop is to teach Unit Testing through hands-on experience us
 ## Setup
 - Local install: 
     - Install [Node.js](https://nodejs.org/en/download)
-    - Run `npm install` in the root directory to install dependencies
-- GitHub codespace: Click the "Code" button on GitHub and select "Open with Codespaces", then follow the steps above. Keep in mind the limitations of GitHub codespaces free, as you might get cut out of it after some time
+    - Open a terminal and run `npm install` in the root directory to install dependencies
+- GitHub codespace: Click the "Code" button on GitHub and select "Open with Codespaces", then after everything has loaded run `npm install` in the terminal.
 
 ### Troubleshooting
 If you have any trouble during the installation, try to follow these steps:
