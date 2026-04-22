@@ -42,6 +42,27 @@ describe('ClassName', () => {
 });
 ```
 
+
+## Setup & Teardown
+
+```javascript
+beforeEach(() => {
+  // Runs before each test
+});
+
+afterEach(() => {
+  // Runs after each test
+});
+
+beforeAll(() => {
+  // Runs once before all tests
+});
+
+afterAll(() => {
+  // Runs once after all tests
+});
+```
+
 ---
 
 ## Common Assertions
@@ -64,13 +85,6 @@ expect(value).toBeFalsy();          // Falsy value (false, 0, '', null, undefine
 expect(str).toContain('substring');
 expect(str).toMatch(/regex/);
 expect(str).toHaveLength(5);
-```
-
-### Numbers
-```javascript
-expect(num).toBeGreaterThan(5);
-expect(num).toBeLessThan(10);
-expect(num).toBeCloseTo(3.14159, 2); // Compare with precision
 ```
 
 ### Arrays & Objects
@@ -142,55 +156,24 @@ describe('async functions', () => {
   it('should handle errors', async () => {
     await expect(failingFunction()).rejects.toThrow();
   });
-
-  // Alternative without async/await
-  it('should work with .then()', (done) => {
-    myFunction().then((result) => {
-      expect(result).toBe('done');
-      done();  // Signal test is complete
-    });
-  });
 });
 ```
 
----
-
-## Setup & Teardown
-
-```javascript
-beforeEach(() => {
-  // Runs before each test
-});
-
-afterEach(() => {
-  // Runs after each test
-});
-
-beforeAll(() => {
-  // Runs once before all tests
-});
-
-afterAll(() => {
-  // Runs once after all tests
-});
-```
-
----
 
 ## Test Organization Best Practices
 
-### ✅ Good Test Names
+###  Good Test Names
 - Describe what should happen
 - `should add two positive numbers`
 - `should throw error for invalid input`
-- `should return empty array when no items`
+- `should return empty array when the cart contains no items`
 
-### ❌ Bad Test Names
-- ❌ `works`
-- ❌ `test 1`
-- ❌ `it should do it`
+### Bad Test Names
+-  `works`
+-  `test 1`
+-  `it should do it`
 
-### ✅ One Assertion Per Test (Usually)
+###  One Assertion Per Test (Usually)
 ```javascript
 // Good - focused test
 it('should calculate tax', () => {
@@ -272,20 +255,5 @@ it.skip('skip this test', () => {
 
 ---
 
-## Common Mistakes
-
-| ❌ Wrong | ✅ Right |
-|---------|--------|
-| `expect(array).toBe(array)` | `expect(array).toEqual(array)` |
-| `expect(obj.method)` | `expect(() => obj.method()).toThrow()` |
-| `test passes with real API call` | `test uses stub/mock of API` |
-| `test depends on external state` | `test is isolated and deterministic` |
-| `multiple unrelated assertions` | `each test verifies one behavior` |
-
----
-
 ## Resources
-
-- [Jest Documentation](https://jestjs.io/)
-- [Jest Matchers API](https://jestjs.io/docs/expect)
-- [Jest Mock Functions](https://jestjs.io/docs/mock-functions)
+You can find more information in the [Jest Documentation](https://jestjs.io/).
