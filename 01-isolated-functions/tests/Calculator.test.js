@@ -206,4 +206,22 @@ describe('Calculator', () => {
       expect(result).toBe(-2);
     });
   });
+
+  describe('factorial', () => {
+    it('should return 1 for factorial of 0', () => {
+      // Arrange
+      
+      // Act
+
+      // Assert
+    });
+
+    it('should return 1 for factorial of 1', () => {});
+
+    it('should return correct factorial for a positive integer', () => {});
+    
+    it('should throw error for negative input', () => {});
+
+  });
+
 });
