@@ -18,9 +18,7 @@ If you have any trouble during the installation, try to follow these steps:
 - Run `npm install` in the root directory
 - If tests don't run, try `npx jest` to run Jest directly
 
-## Exercises
-
-There are five exercises in the repository. Their goals are to teach the basics of unit testing, refactoring, and mocking.
+## Running the tests
 
 The unit test projects are already set up for each project. Here is a list of commands to run the tests. Open a terminal in the repository and run the commands below.
 
@@ -34,7 +32,13 @@ To run only the tests from the exercise you are working on:
 npm test -- --testPathPattern=01-isolated-functions
 ```
 
+## Jest
+
 For this workshop, we will use JavaScript with Jest as the testing framework. See the [JEST_CHEATSHEET](JEST_CHEATSHEET.md) section to learn more about Jest and the code conventions we will use.
+
+## Exercises
+
+There are five exercises in the repository. Their goals are to teach the basics of unit testing, refactoring, and mocking.
 
 ### Ex. 1: Factorial
 Let's start writing unit tests for a function that computes the factorial of a number.
