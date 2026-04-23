@@ -34,7 +34,9 @@ npm test -- --testPathPattern=01-isolated-functions
 
 ## Jest
 
-For this workshop, we will use JavaScript with Jest as the testing framework. See the [JEST_CHEATSHEET](JEST_CHEATSHEET.md) section to learn more about Jest and the code conventions we will use.
+For this workshop, we will use JavaScript with Jest as the testing framework. 
+
+Refer to the [JEST_CHEATSHEET](JEST_CHEATSHEET.md) section to learn more about Jest and the code conventions we will use.
 
 ## Exercises
 
