@@ -35,3 +35,30 @@ npm test -- --testPathPattern=01-isolated-functions
 ```
 
 For this workshop, we will use JavaScript with Jest as the testing framework. See the [JEST_CHEATSHEET](JEST_CHEATSHEET.md) section to learn more about Jest and the code conventions we will use.
+
+### Ex. 1: Factorial
+Let's start writing unit tests for a function that computes the factorial of a number.
+
+**The goal:** To understand how to write basic unit tests using Jest and practice testing pure functions with various inputs and edge cases.
+
+### Ex. 2: Safe Refactoring
+Our legacy project has some really bad, but working, code that needs improvement. Since we have comprehensive tests, we can refactor safely.
+
+**The goal:** to practice refactoring code while maintaining test coverage and ensuring existing functionality is preserved.
+
+### Ex. 3: Dependencies
+We have a function that depends on an external API to fetch data. We want to test our function without making actual API calls, so we need to mock the dependencies.
+
+We also have code that logs data, and we need to ensure that we are logging the correct information.
+
+**The goal:** to learn how to mock dependencies in unit tests and verify interactions with those dependencies.
+
+### Ex. 4: Test Builders
+Our coffee shop project has a lot of complex objects that we need to create for our tests. To make our tests cleaner and more maintainable, we can use test builders to create these objects.
+
+**The goal:** to understand the concept of test builders and how they can help create complex test data in a clean and maintainable way.
+
+### Ex. 5: Integration Example
+Let's bring it all together with a more realistic scenario involving multiple classes and interactions.
+
+**The goal:** to practice writing both unit tests and integration tests in a realistic application context.
