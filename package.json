@@ -8,15 +8,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
-  "keywords": [
-    "unit-testing",
-    "testing",
-    "jest",
-    "education",
-    "isolation",
-    "mocking"
-  ],
-  "author": "",
+  "author": "Federico Faruffini",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.29.0",
