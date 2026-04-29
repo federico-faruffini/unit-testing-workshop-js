@@ -1,51 +1,3 @@
-export class Product {
-  constructor(id, name, price, stock) {
-    this.id = id;
-    this.name = name;
-    this.price = price;
-    this.stock = stock;
-  }
-}
-
-export class Cart {
-  constructor() {
-    this.items = [];
-  }
-
-  addProduct(product, quantity) {
-    const existing = this.items.find(i => i.product.id === product.id);
-    if (existing) {
-      existing.quantity += quantity;
-    } else {
-      this.items.push({ product, quantity });
-    }
-  }
-
-  getTotal() {
-    return this.items.reduce((sum, item) => sum + (item.product.price * item.quantity), 0);
-  }
-
-  isEmpty() {
-    return this.items.length === 0;
-  }
-
-  clear() {
-    this.items = [];
-  }
-}
-
-export class PaymentService {
-  async processPayment(amount, cardToken) {
-    throw new Error('Must be implemented');
-  }
-}
-
-export class NotificationService {
-  async sendOrderConfirmation(userId, orderId, amount) {
-    throw new Error('Must be implemented');
-  }
-}
-
 export class OrderService {
   constructor(paymentService, notificationService) {
     this.paymentService = paymentService;
@@ -95,8 +47,12 @@ export class OrderService {
 
   cancelOrder(orderId) {
     const order = this.getOrder(orderId);
-    if (!order) throw new Error('Order not found');
+    if (!order) {
+      throw new Error('Order not found');
+    }
+
     order.status = 'cancelled';
+    
     return order;
   }
 }
