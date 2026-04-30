@@ -91,8 +91,24 @@ expect(str).toHaveLength(5);
 ```javascript
 expect(array).toHaveLength(3);
 expect(array).toContain('item');
+
 expect(obj).toHaveProperty('name', 'John');
+expect(obj).toMatchObject({ status: 'confirmed' });
 ```
+
+### Numbers
+
+```javascript
+expect(number).toBeGreaterThan(0);
+```
+
+
+### Not null values
+
+```javascript
+expect(result.orderId).toBeDefined();
+```
+
 
 ### Errors
 ```javascript
@@ -116,10 +132,14 @@ const mockFn = jest.fn().mockRejectedValue(new Error('fail'));
 ### Verifying Mock Calls
 ```javascript
 expect(mockFn).toHaveBeenCalled();
-expect(mockFn).toHaveBeenCalledTimes(2);
-expect(mockFn).toHaveBeenCalledWith(arg1, arg2);
-expect(mockFn).toHaveBeenLastCalledWith(arg1, arg2);
 expect(mockFn).not.toHaveBeenCalled();
+
+expect(mockFn).toHaveBeenCalledTimes(2);
+
+expect(mockFn).toHaveBeenCalledWith(arg1, arg2);
+expect(mockFn).toHaveBeenCalledWith(expect.any(String));
+
+expect(mockFn).toHaveBeenLastCalledWith(arg1, arg2);
 ```
 
 ### Inspecting Mock Call Data
