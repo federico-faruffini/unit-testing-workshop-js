@@ -1,3 +1,7 @@
+import { Cart } from './Cart.js';
+import { Order } from './Order.js';
+import { Product } from './Product.js';
+
 export class OrderService {
   constructor(paymentService, notificationService) {
     this.paymentService = paymentService;
@@ -12,17 +16,16 @@ export class OrderService {
 
     const amount = cart.getTotal();
     
-    const paymentResult = await this.paymentService.processPayment(amount, cardToken);
+    await this.paymentService.processPayment(amount, cardToken);
     
-    const orderId = `ORDER-${Date.now()}`;
-    const order = {
-      orderId,
+    const order = new Order({
+      orderId: cart.id,
       userId,
       amount,
-      items: [...cart.items],
+      products: cart.items,
       status: 'confirmed',
       createdAt: new Date()
-    };
+    });
     
     this.orders.push(order);
 
@@ -51,8 +54,8 @@ export class OrderService {
       throw new Error('Order not found');
     }
 
-    order.status = 'cancelled';
-    
-    return order;
+    return order.cancel();
   }
 }
+
+export { Cart, Order, Product };
