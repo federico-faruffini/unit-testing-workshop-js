@@ -18,26 +18,24 @@ export class OrderService {
     
     await this.paymentService.processPayment(amount, cardToken);
     
-    const order = new Order({
-      orderId: cart.id,
-      userId,
-      amount,
-      products: cart.items,
-      status: 'confirmed',
-      createdAt: new Date()
-    });
+    const order = new Order(
+      cart.id, 
+      userId, 
+      amount, 
+      cart.items, 
+      'confirmed', new Date());
     
     this.orders.push(order);
 
     try {
-      await this.notificationService.sendOrderConfirmation(userId, orderId, amount);
+      await this.notificationService.sendOrderConfirmation(userId, order.orderId, amount);
     } catch (error) {
       console.error('Failed to send notification:', error);
     }
 
     cart.clear();
     
-    return { orderId, amount, status: 'confirmed' };
+    return { orderId: order.orderId, amount, status: 'confirmed' };
   }
 
   getOrder(orderId) {
