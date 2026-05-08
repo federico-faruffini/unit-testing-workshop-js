@@ -122,5 +122,101 @@ describe('DamageCalculator', () => {
       // Assert
       expect(action).toThrow('Enemy cannot be null');
     });
+
+    it('should not add level bonus when player level is below 5', () => {
+      // Arrange
+      const player = new Player(10, 0, DamageType.BASIC, 3);
+      const enemy = new Enemy(5, 100);
+
+      // Act
+      const damage = DamageCalculator.computeDamage(player, enemy);
+
+      // Assert
+      expect(damage).toBe(5);
+    });
+
+    it('should add 2 damage when player level is between 5 and 9', () => {
+      // Arrange
+      const player = new Player(10, 0, DamageType.BASIC, 7);
+      const enemy = new Enemy(5, 100);
+
+      // Act
+      const damage = DamageCalculator.computeDamage(player, enemy);
+
+      // Assert
+      expect(damage).toBe(7);
+    });
+
+    it('should add 5 damage when player level is between 10 and 19', () => {
+      // Arrange
+      const player = new Player(10, 0, DamageType.BASIC, 15);
+      const enemy = new Enemy(5, 100);
+
+      // Act
+      const damage = DamageCalculator.computeDamage(player, enemy);
+
+      // Assert
+      expect(damage).toBe(10);
+    });
+
+    it('should add 5 plus 3 extra damage when player level is between 10 and 19 and enemy is vulnerable', () => {
+      // Arrange
+      const player = new Player(10, 0, DamageType.BASIC, 15);
+      const enemy = new Enemy(5, 100, true);
+
+      // Act
+      const damage = DamageCalculator.computeDamage(player, enemy);
+
+      // Assert
+      expect(damage).toBe(18);
+    });
+
+    it('should add 10 damage when player level is 20 or above', () => {
+      // Arrange
+      const player = new Player(10, 0, DamageType.BASIC, 25);
+      const enemy = new Enemy(5, 100);
+
+      // Act
+      const damage = DamageCalculator.computeDamage(player, enemy);
+
+      // Assert
+      expect(damage).toBe(15);
+    });
+
+    it('should add 10 plus 3 extra damage when player level is 20 or above and enemy is vulnerable', () => {
+      // Arrange
+      const player = new Player(10, 0, DamageType.BASIC, 25);
+      const enemy = new Enemy(5, 100, true);
+
+      // Act
+      const damage = DamageCalculator.computeDamage(player, enemy);
+
+      // Assert
+      expect(damage).toBe(23);
+    });
+
+    it('should not add vulnerability bonus from level when level is between 5 and 9 even if enemy is vulnerable', () => {
+      // Arrange
+      const player = new Player(10, 0, DamageType.BASIC, 7);
+      const enemy = new Enemy(5, 100, true);
+
+      // Act
+      const damage = DamageCalculator.computeDamage(player, enemy);
+
+      // Assert
+      expect(damage).toBe(12);
+    });
+
+    it('should clamp level bonus damage to enemy life', () => {
+      // Arrange
+      const player = new Player(10, 0, DamageType.BASIC, 25);
+      const enemy = new Enemy(5, 8);
+
+      // Act
+      const damage = DamageCalculator.computeDamage(player, enemy);
+
+      // Assert
+      expect(damage).toBe(8);
+    });
   });
 });
