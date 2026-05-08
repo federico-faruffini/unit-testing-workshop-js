@@ -6,8 +6,13 @@ Quick reference for unit testing with Jest
 
 ```bash
 npm test              # Run all tests once
-npm run test:watch   # Run tests, re-run on file changes
+npm run test:watch   # Run all tests in watch mode
 npm run test:coverage # Run with coverage report
+
+npm test -- 01-isolated-functions/tests/Calculator.test.js  # Run all tests in a specific file (IMPORTANT: the path here should start  from the project root)
+npm test -- Calculator                                       # Run by filename pattern (regex match against full path)
+npm test -- --watch Calculator                              # Run a specific file in watch mode
+npm test -- --watchAll                                      # Run all files in watch mode
 ```
 
 ---
