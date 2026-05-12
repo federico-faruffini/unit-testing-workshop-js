@@ -5,16 +5,21 @@ This repository is used in a workshop for Master's Degree students of Computer E
 The goal of the workshop is to teach Unit Testing through hands-on experience using JavaScript as the programming language.
 
 ## Setup
+You can follow the workshop both with a locall install or a GitHub Codespace.
+
 - Local install: 
     - Install [Node.js](https://nodejs.org/en/download)
     - Open a terminal and run `npm install` in the root directory to install dependencies
-- GitHub codespace: Click the "Code" button on GitHub and select "Open with Codespaces", then after everything has loaded run `npm install` in the terminal.
+- GitHub codespace:
+  - Click the "Code" button on GitHub and select "Open with Codespaces"
+  - Wait for everything to load
+  - run `npm install` in the terminal.
 
 ### Troubleshooting
 If you have any trouble during the installation, try to follow these steps:
 
 - Make sure you have Node.js version 14 or higher installed
-- Reboot the PC
+- Reboot the PC if you are running the project locally
 - Run `npm install` in the root directory
 - If tests don't run, try `npx jest` to run Jest directly
 
