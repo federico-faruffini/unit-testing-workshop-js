@@ -8,12 +8,14 @@ The goal of the workshop is to teach Unit Testing through hands-on experience us
 You can follow the workshop both with a local install or a GitHub Codespace.
 
 - Local install: 
+    - Install [Visual Studio Code](https://code.visualstudio.com/download)
     - Install [Node.js](https://nodejs.org/en/download)
-    - Open a terminal and run `npm install` in the root directory to install dependencies
+    - Clone the repository
+    - Open a terminal and run `npm install` in the root directory of the repo to install dependencies
 - GitHub codespace:
-  - Click the "Code" button on GitHub and select "Open with Codespaces"
+  - Click the "Code" button on the GitHub page of this repository and select "Open with Codespaces"
   - Wait for everything to load
-  - run `npm install` in the terminal.
+  - run `npm install` in the terminal
 
 ### Troubleshooting
 If you have any trouble during the installation, try to follow these steps:
