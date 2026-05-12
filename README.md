@@ -5,7 +5,7 @@ This repository is used in a workshop for Master's Degree students of Computer E
 The goal of the workshop is to teach Unit Testing through hands-on experience using JavaScript as the programming language.
 
 ## Setup
-You can follow the workshop both with a locall install or a GitHub Codespace.
+You can follow the workshop both with a local install or a GitHub Codespace.
 
 - Local install: 
     - Install [Node.js](https://nodejs.org/en/download)
