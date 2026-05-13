@@ -1,4 +1,5 @@
 import { PaymentProcessor } from '../PaymentProcessor.js';
+import { Logger } from '../logger.js';
 
 describe('PaymentProcessor', () => {
   let paymentProcessor;
