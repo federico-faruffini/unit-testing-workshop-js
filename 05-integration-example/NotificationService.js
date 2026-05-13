@@ -1,5 +1,5 @@
 export class NotificationService {
   async sendOrderConfirmation(userId, orderId, amount) {
-    throw new Error('Must be implemented');
+    await notificationApi.sendOrderConfirmation(userId, orderId, amount);
   }
 }

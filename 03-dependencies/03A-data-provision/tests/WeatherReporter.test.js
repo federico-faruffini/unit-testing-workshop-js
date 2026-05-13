@@ -14,6 +14,9 @@ describe('WeatherReporter', () => {
 
   describe('getReport', () => {
     it('should format weather report normally', async () => {
+      // Arrange
+      // Act
+      // Assert
     });
 
     it('should report when it is hot', async () => {

@@ -1,13 +1,13 @@
 export class Logger {
   info(message) {
-    throw new Error('Must be implemented');
+    api.logInformation(message);
   }
 
   error(message) {
-    throw new Error('Must be implemented');
+    api.logError(message);
   }
 
   warn(message) {
-    throw new Error('Must be implemented');
+    api.logMessage(message);
   }
 }

@@ -1,8 +1,4 @@
-export class WeatherService {
-  async getWeather(city) {
-    throw new Error('Must be implemented');
-  }
-}
+import { WeatherService } from './WeatherService.js';
 
 export class WeatherReporter {
   constructor(weatherService) {

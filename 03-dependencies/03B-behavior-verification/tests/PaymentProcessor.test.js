@@ -10,6 +10,9 @@ describe('PaymentProcessor', () => {
 
   describe('processPayment', () => {
     it('should process valid payment and log success', () => {
+      // Arrange
+      // Act
+      // Assert
     });
 
     it('should log error for negative amount', () => {
