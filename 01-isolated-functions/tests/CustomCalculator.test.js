@@ -1,10 +1,10 @@
-import { Calculator } from '../Calculator.js';
+import { CustomCalculator } from '../CustomCalculator.js';
 
-describe('Calculator', () => {
+describe('CustomCalculator', () => {
   let calculator;
 
   beforeEach(() => {
-    calculator = new Calculator();
+    calculator = new CustomCalculator();
   });
 
   describe('add', () => {
